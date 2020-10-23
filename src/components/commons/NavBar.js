@@ -1,16 +1,50 @@
 import React from 'react'
-import { Link, Route } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import M from "materialize-css";
 
-const NavBar = (props) => {
-    return(
-        <>
-            <Link to="/">Home</Link>
-            <Link to="/portfolio">Portfolio</Link>
-            <Link to="/certificates">Certificates</Link>
-            <Link to="/about-me">AboutMe</Link>
-            <Link to="/contact">Contact</Link>
-        </>
-    )
-}
+
+const PrintLi = () => ( 
+    <>
+    <li>
+        <NavLink exact to='/' activeClassName="#004d40 teal darken-4">Home</NavLink>
+    </li>
+    <li>
+        <NavLink to='/portfolio' activeClassName="#004d40 teal darken-4">Portfolio</NavLink>
+    </li>
+    <li>
+        <NavLink to='/certificates' activeClassName="#004d40 teal darken-4">Certificates</NavLink>
+    </li>
+    <li>
+        <NavLink to='/blog' activeClassName="#004d40 teal darken-4">Blog</NavLink>
+    </li>
+    <li>
+        <NavLink to='/about-me' activeClassName="#004d40 teal darken-4">AboutMe</NavLink>
+    </li>
+    <li>
+        <NavLink to='/contact' activeClassName="#004d40 teal darken-4">Contact</NavLink>
+    </li>
+    </>
+)
+
+const NavBar = () => {
+        return(
+            <nav className="#26a69a teal lighten-1">
+
+                <div className="container">
+                    <a href="#" className="brand-logo">AnnTony</a>
+                    <a href="#" data-target="mobile-demo" className="sidenav-trigger">
+                        <i className="large material-icons">arrow_back</i>
+                    </a>
+                    <ul className="right hide-on-med-and-down">
+                        <PrintLi/>
+                    </ul>               
+                </div>
+                <ul className="sidenav" id="mobile-demo">
+                    <PrintLi/>
+                </ul>
+
+            </nav>
+        )
+    }
 
 export default NavBar
