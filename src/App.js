@@ -18,6 +18,7 @@ function App() {
     <>
       <BrowserRouter>   
       <NavBar />
+      <div className="container">
       <Switch>
         <Route exact path='/'>
           <Home/>
@@ -38,6 +39,7 @@ function App() {
           <Contact/>
         </Route>
       </Switch>
+      </div>
       <Footer/>
       </BrowserRouter>
     </>

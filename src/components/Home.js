@@ -1,22 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import Card from './commons/Card'
 
 class Home extends React.Component{
-    state = { data : [] }
 
+    constructor(props){
+        super(props)
+        this.state = { data : [] }
+    }
 
-    componentDidMount(){   
-        fetch('http://127.0.0.1:8000/api/blog/',
-        {
-            method: 'GET'
-        }
-        ).then(response => {
-            this.setState({
-                data: response
-            })
-        }).catch(error => {
-            console.error(error)
+    componentDidMount(){
+        this.fetchData()
+    }
+
+    fetchData = async () => {
+        const response = await fetch('http://127.0.0.1:8000/api/blog/')
+        const data = await response.json()
+        this.setState({
+            data: data
         })
     }
 
@@ -24,11 +26,9 @@ class Home extends React.Component{
         return (
             <>
             <h1>Home</h1>
-            <p>{
-               this.state.data && 
-               this.state.data[0] && 
-               this.state.data[0].subtitle
-            }</p>
+            <div className="row">
+                {this.state.data.map(element =><Card data={element} />)}
+            </div>
             </>
         )
     }
